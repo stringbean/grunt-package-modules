@@ -38,7 +38,7 @@
     "node_modules"
   ],
   "dependencies": {
-    "npm": "^2.5.1",
+    "npm": "^6.0.0",
     "chalk": "^1.1.1"
   }
 }
