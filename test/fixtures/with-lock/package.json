@@ -1,0 +1,8 @@
+{
+  "name": "with-lock",
+  "private": true,
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "list-of-cheeses": "^1.0.5"
+  }
+}

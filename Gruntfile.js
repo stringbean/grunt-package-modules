@@ -43,6 +43,14 @@ module.exports = function(grunt) {
         cwd: 'tmp/basic',
         src: 'package.json',
         dest: 'dist'
+      },
+      'no-src': {
+        cwd: 'tmp/no-src'
+      },
+      'with-lock': {
+        cwd: 'tmp/with-lock',
+        src: 'package.json',
+        dest: 'dist'
       }
     },
 
