@@ -1,25 +1,27 @@
 {
-  "name": "grunt-package-modules",
+  "name": "@string-bean/grunt-package-modules",
   "description": "Packages node_modules dependencies at build time for addition to a distribution package.",
-  "version": "0.2.0-SNAPSHOT",
-  "homepage": "https://github.com/joshperry/grunt-package-modules",
+  "version": "0.2.0",
+  "homepage": "https://github.com/stringbean/grunt-package-modules",
   "author": {
-    "name": "Joshua Perry",
-    "email": "josh@6bit.com"
+    "name": "Michael Stringer",
+    "email": "npm@purpledragon.software"
   },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/joshperry/grunt-package-modules.git"
-  },
-  "bugs": {
-    "url": "https://github.com/joshperry/grunt-package-modules/issues"
-  },
-  "licenses": [
+  "contributors": [
     {
-      "type": "MIT",
-      "url": "https://github.com/joshperry/grunt-package-modules/blob/master/LICENSE-MIT"
+      "name": "Joshua Perry",
+      "email": "josh@6bit.com",
+      "url": "https://github.com/joshperry"
     }
   ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/stringbean/grunt-package-modules.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stringbean/grunt-package-modules/issues"
+  },
+  "license":  "MIT",
   "engines": {
     "node": ">= 6"
   },
