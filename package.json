@@ -1,7 +1,7 @@
 {
   "name": "@string-bean/grunt-package-modules",
   "description": "Packages node_modules dependencies at build time for addition to a distribution package.",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "homepage": "https://github.com/stringbean/grunt-package-modules",
   "author": {
     "name": "Michael Stringer",
