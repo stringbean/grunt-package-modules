@@ -1,8 +1,7 @@
 'use strict';
 
-var grunt = require('grunt');
-var fs = require('fs');
-var process = require('process');
+const grunt = require('grunt');
+const fs = require('fs');
 
 function verifyDistDir(test, name, lockfile) {
   test.expect(4);
@@ -12,8 +11,8 @@ function verifyDistDir(test, name, lockfile) {
   test.ok(grunt.file.isFile(`tmp/${name}/dist/package.json`), 'package.json copied');
   test.equal(grunt.file.isFile(`tmp/${name}/dist/package-lock.json`), lockfile, 'package-lock.json copied');
 
-  var expectedModules = fs.readFileSync(`test/expected/${name}`, 'utf8').split("\n");
-  var actualModules = fs.readdirSync(`tmp/${name}/dist/node_modules`).sort();
+  const expectedModules = fs.readFileSync(`test/expected/${name}`, 'utf8').split('\n');
+  const actualModules = fs.readdirSync(`tmp/${name}/dist/node_modules`).sort();
   test.deepEqual(expectedModules, actualModules, 'bundled node_modules');
 
   test.done();

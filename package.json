@@ -1,7 +1,7 @@
 {
   "name": "@string-bean/grunt-package-modules",
   "description": "Packages node_modules dependencies at build time for addition to a distribution package.",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "homepage": "https://github.com/stringbean/grunt-package-modules",
   "author": {
     "name": "Michael Stringer",
@@ -21,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/stringbean/grunt-package-modules/issues"
   },
-  "license":  "MIT",
+  "license": "MIT",
   "engines": {
     "node": ">= 6"
   },
@@ -32,8 +32,8 @@
     "grunt": "^1.0.0",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-jshint": "^1.0.0",
-    "grunt-contrib-nodeunit": "^2.0.0"
+    "grunt-contrib-nodeunit": "^2.0.0",
+    "grunt-eslint": "^21.0.0"
   },
   "keywords": [
     "gruntplugin",
