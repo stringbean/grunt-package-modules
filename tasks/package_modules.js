@@ -92,7 +92,7 @@ module.exports = function (grunt) {
 
         const options = {
           cmd: 'npm',
-          args: ['ci'],
+          args: ['ci', '--production'],
           opts: {
             cwd: dest
           }
@@ -104,11 +104,9 @@ module.exports = function (grunt) {
       } else {
         grunt.verbose.writeln(`Running ${chalk.cyan('npm install')} in ${chalk.cyan(dest)}`);
 
-        const npmArgs = ['install', '--production', '--no-package-lock'];
-
         const options = {
           cmd: 'npm',
-          args: npmArgs,
+          args: ['install', '--production', '--no-package-lock'],
           opts: {
             cwd: dest
           }
