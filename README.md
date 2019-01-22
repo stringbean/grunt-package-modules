@@ -1,8 +1,6 @@
-# grunt-package-modules [![CircleCI](https://circleci.com/gh/stringbean/grunt-package-modules/tree/master.svg?style=shield)](https://circleci.com/gh/stringbean/grunt-package-modules/tree/master) [![Requirements Status](https://requires.io/github/stringbean/grunt-package-modules/requirements.svg?branch=master)](https://requires.io/github/stringbean/grunt-package-modules/requirements/?branch=master)
+# grunt-package-modules [![Latest Version](https://img.shields.io/npm/v/@string-bean/grunt-package-modules.svg)](https://www.npmjs.com/package/@string-bean/grunt-package-modules) [![CircleCI](https://circleci.com/gh/stringbean/grunt-package-modules/tree/master.svg?style=shield)](https://circleci.com/gh/stringbean/grunt-package-modules/tree/master) [![Requirements Status](https://requires.io/github/stringbean/grunt-package-modules/requirements.svg?branch=master)](https://requires.io/github/stringbean/grunt-package-modules/requirements/?branch=master) 
 
 > Package node_modules dependencies for bundling with a distribution package.
-
-
 
 Checking `node_modules` in to source control is a lame solution to locking dependencies for a certain commit.
 [npm shrinkwrap](https://docs.npmjs.com/cli/shrinkwrap) is great for locking dependencies to specific commits but doesn't directly help with distribution packaging.
