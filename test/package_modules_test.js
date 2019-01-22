@@ -13,7 +13,7 @@ function verifyDistDir(test, name, lockfile) {
 
   const expectedModules = fs.readFileSync(`test/expected/${name}`, 'utf8').split('\n');
   const actualModules = fs.readdirSync(`tmp/${name}/dist/node_modules`).sort();
-  test.deepEqual(expectedModules, actualModules, 'bundled node_modules');
+  test.deepEqual(actualModules, expectedModules, 'bundled node_modules');
 
   test.done();
 }
@@ -27,5 +27,8 @@ exports.package_modules = {
   },
   'with-lock': function(test) {
     verifyDistDir(test, 'with-lock', true);
+  },
+  yarn: function(test) {
+    verifyDistDir(test, 'yarn', false);
   },
 };

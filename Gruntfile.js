@@ -37,7 +37,10 @@ module.exports = function(grunt) {
         cwd: 'tmp/with-lock',
         src: 'package.json',
         dest: 'dist'
-      }
+      },
+      yarn: {
+        cwd: 'tmp/yarn'
+      },
     },
 
     nodeunit: {

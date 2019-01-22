@@ -1,0 +1,8 @@
+.yarn-integrity
+ansi-styles
+chalk
+color-convert
+color-name
+escape-string-regexp
+has-flag
+supports-color

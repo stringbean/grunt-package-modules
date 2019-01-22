@@ -28,6 +28,54 @@ module.exports = function (grunt) {
     });
   }
 
+  function runNpmCi(dir, done) {
+    grunt.verbose.writeln(`Running ${chalk.cyan('npm ci')} in ${chalk.cyan(dir)}`);
+
+    const options = {
+      cmd: 'npm',
+      args: ['ci', '--production'],
+      opts: {
+        cwd: dir
+      }
+    };
+
+    grunt.util.spawn(options, function (err) {
+      return done(err);
+    });
+  }
+
+  function runNpmInstall(dir, done) {
+    grunt.verbose.writeln(`Running ${chalk.cyan('npm install')} in ${chalk.cyan(dir)}`);
+
+    const options = {
+      cmd: 'npm',
+      args: ['install', '--production', '--no-package-lock'],
+      opts: {
+        cwd: dir
+      }
+    };
+
+    grunt.util.spawn(options, function (err) {
+      return done(err);
+    });
+  }
+
+  function runYarn(dir, done) {
+    grunt.verbose.writeln(`Running ${chalk.cyan('yarn install')} in ${chalk.cyan(dir)}`);
+
+    const options = {
+      cmd: 'yarn',
+      args: ['install', '--production', '--frozen-lockfile'],
+      opts: {
+        cwd: dir
+      }
+    };
+
+    grunt.util.spawn(options, function (err) {
+      return done(err);
+    });
+  }
+
   function processModules(f, done) {
     function cb(ci) {
       grunt.verbose.writeln(`npm ci supported? ${chalk.cyan(ci)}`);
@@ -49,6 +97,7 @@ module.exports = function (grunt) {
 
       let packageSrc;
       let useLockfile = false;
+      let useYarn = false;
 
       if (f.src) {
         if (f.src.length !== 1) {
@@ -73,9 +122,15 @@ module.exports = function (grunt) {
         grunt.verbose.writeln(`Copying ${chalk.cyan(packageSrc)} -> ${chalk.cyan(packageDest)}`);
         grunt.file.copy(packageSrc, packageDest);
 
+        const yarnLockSrc = path.join(cwd, 'yarn.lock');
         const lockSrc = path.join(cwd, 'package-lock.json');
 
-        if (grunt.file.exists(lockSrc)) {
+        if (grunt.file.exists(yarnLockSrc)) {
+          useYarn = true;
+          const lockDest = path.join(dest, 'yarn.lock');
+          grunt.verbose.writeln(`Copying ${chalk.cyan(yarnLockSrc)} -> ${chalk.cyan(lockDest)}`);
+          grunt.file.copy(yarnLockSrc, lockDest);
+        } else if (grunt.file.exists(lockSrc)) {
           useLockfile = true;
           const lockDest = path.join(dest, 'package-lock.json');
           grunt.verbose.writeln(`Copying ${chalk.cyan(lockSrc)} -> ${chalk.cyan(lockDest)}`);
@@ -87,34 +142,12 @@ module.exports = function (grunt) {
         return;
       }
 
-      if (ci && useLockfile) {
-        grunt.verbose.writeln(`Running ${chalk.cyan('npm ci')} in ${chalk.cyan(dest)}`);
-
-        const options = {
-          cmd: 'npm',
-          args: ['ci', '--production'],
-          opts: {
-            cwd: dest
-          }
-        };
-
-        grunt.util.spawn(options, function (err) {
-          return done(err);
-        });
+      if (useYarn) {
+        runYarn(dest, done);
+      } else if (ci && useLockfile) {
+        runNpmCi(dest, done);
       } else {
-        grunt.verbose.writeln(`Running ${chalk.cyan('npm install')} in ${chalk.cyan(dest)}`);
-
-        const options = {
-          cmd: 'npm',
-          args: ['install', '--production', '--no-package-lock'],
-          opts: {
-            cwd: dest
-          }
-        };
-
-        grunt.util.spawn(options, function (err) {
-          return done(err);
-        });
+        runNpmInstall(dest, done);
       }
     }
 

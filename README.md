@@ -59,7 +59,8 @@ grunt.initConfig({
 
 If a valid `package-lock.json` and `npm` 5.7.0 or higher is available, `grunt-package-modules` will use `npm ci` to
 generate the modules - improving reproducibility and speed.
- 
+
+If a valid `yarn.lock` is found then `grunt-package-modules` will use `yarn install` to generate the modules.
 
 ### Example Build
 
